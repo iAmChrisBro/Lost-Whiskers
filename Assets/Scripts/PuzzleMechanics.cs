@@ -12,9 +12,9 @@ public class PuzzleMechanics : MonoBehaviour
         animate.SetBool("Pressed", false);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (pressurePlate != null && other.gameObject.CompareTag("Player"))
+        if (pressurePlate != null && other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("MoveBlock"))
         {
             print("Working Enter");
             animate.SetBool("Pressed", true);
@@ -22,9 +22,19 @@ public class PuzzleMechanics : MonoBehaviour
 
     }
 
-    private void OnCollisionExit(Collision other)
+    private void OnTriggerStay(Collider other)
     {
-        if (pressurePlate != null && other.gameObject.CompareTag("Player"))
+        if (pressurePlate != null && other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("MoveBlock"))
+        {
+            print("Working Stay");
+            animate.SetBool("Pressed", true);
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (pressurePlate != null && other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("MoveBlock"))
         {
             print("Working Exit");
             animate.SetBool("Pressed", false);
