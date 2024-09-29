@@ -1,44 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformMovement : MonoBehaviour
+public class PointMovement : MonoBehaviour
 {
-    public float speed;
-    public int startingPoint;
-    public Transform[] points;
-    private int i;
-    // Start is called before the first frame update
-    void Start()
-    {
-        transform.position = points[startingPoint].position;
-    }
+    public Transform[] points;  // Array of points the object will move between
+    public float speed = 2f;    // Speed at which the object will move
+    private int i = 0;          // Index for tracking current point
+    private bool movingForward = true; // To track direction of movement (forward or backward)
 
-    // Update is called once per frame
     void Update()
     {
-        if (i == points.Length)
+        if (Vector2.Distance(transform.position, points[i].position) < 0.02f)
         {
-            i = 0;
-        }
-        if (Vector2.Distance(transform.position, points[startingPoint].position) < 0.02f)
-        {
-            i++;
-            if(i == points.Length)
+
+            // Update the index based on the current direction
+            if (movingForward)
             {
-                i = 0;
+                i++;
+                if (i == points.Length) // Reached the last point
+                {
+                    i--; // Step back to stay within bounds
+                    movingForward = false; // Switch direction to backward
+                   
+                }
+            }
+            else
+            {
+                i--;
+                if (i == -1) // Reached the first point
+                {
+                    i++; // Step forward to stay within bounds
+                    movingForward = true; // Switch direction to forward
+                }
             }
         }
+
+        // Move the object towards the current target point
         transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
-    }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        col.transform.SetParent(transform);
-    }
-
-    private void OnCollisionExit(Collision col)
-    {
-        col.transform.SetParent(null);
     }
 }

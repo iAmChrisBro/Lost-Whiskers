@@ -9,15 +9,10 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text scoreText;
     public float scoreCount;
     public float totalScore;
-
-
-    private void OnTriggerEnter(Collider other)
+ 
+    public void UpdateScore()
     {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            scoreCount++;
-            scoreText.text = scoreCount.ToString() + " / " + totalScore.ToString();
-            Destroy(gameObject);
-        }
+        scoreCount++;
+        scoreText.text = scoreCount.ToString() + " / " + totalScore.ToString();
     }
 }
