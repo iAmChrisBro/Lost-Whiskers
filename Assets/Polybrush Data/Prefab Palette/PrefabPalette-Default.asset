@@ -31,7 +31,7 @@ MonoBehaviour:
     name: Birch Tree
   - gameObject: {fileID: 7144351110939978239, guid: f88a9f5299ed26243a983cf01b2a8c0a, type: 3}
     settings:
-      m_Strength: 100
+      m_Strength: 48.69748
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 0, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -95,7 +95,7 @@ MonoBehaviour:
     name: Grass1
   - gameObject: {fileID: 6664278520130324444, guid: bff106669765e5d46a823eb7a1ef5ce5, type: 3}
     settings:
-      m_Strength: 77.53783
+      m_Strength: 100
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 0, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -127,7 +127,7 @@ MonoBehaviour:
     name: Red Small Mushroom
   - gameObject: {fileID: 1294127067051120673, guid: af5c0414637e6454998e0cd17949bb21, type: 3}
     settings:
-      m_Strength: 100
+      m_Strength: 49.52942
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 0, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -143,7 +143,7 @@ MonoBehaviour:
     name: Small Rock
   - gameObject: {fileID: 3668402674830388505, guid: cec4f5d08229a1e499dcd06fee7ca808, type: 3}
     settings:
-      m_Strength: 30.58823
+      m_Strength: 48.142838
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 0, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
