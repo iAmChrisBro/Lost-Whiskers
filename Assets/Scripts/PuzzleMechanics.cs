@@ -5,29 +5,14 @@ using UnityEngine;
 public class PuzzleMechanics : MonoBehaviour
 {
     public Transform pressurePlate;
-    public Animator animate;
-    
-    void Start()
-    {
-        animate.SetBool("Pressed", false);
-    }
+    public Animator animatePlate, animateDoor;
 
     private void OnTriggerEnter(Collider other)
     {
         if (pressurePlate != null && other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("MoveBlock"))
         {
-            print("Working Enter");
-            animate.SetBool("Pressed", true);
-        }
-
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (pressurePlate != null && other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("MoveBlock"))
-        {
-            print("Working Stay");
-            animate.SetBool("Pressed", true);
+            animatePlate.SetBool("Pressed", true);
+            animateDoor.SetBool("isOpen", true);
         }
 
     }
@@ -36,8 +21,8 @@ public class PuzzleMechanics : MonoBehaviour
     {
         if (pressurePlate != null && other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("MoveBlock"))
         {
-            print("Working Exit");
-            animate.SetBool("Pressed", false);
+            animatePlate.SetBool("Pressed", false);
+            animateDoor.SetBool("isOpen", false);
         }
 
     }
