@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CinemachineTarget
   - MoveBlock
+  - Wolf
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -15,11 +17,11 @@ TagManager:
   - UI
   - Ground
   - Collide
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player 1
+  - Player 2
+  - Player 3
+  - BackgroundCam
+  - ForegroundCam
   - 
   - 
   - 

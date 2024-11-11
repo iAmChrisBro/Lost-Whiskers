@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2502923650507345309
+--- !u!1 &2979846120473242255
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4550009541256306080}
-  - component: {fileID: 6636607930397298491}
-  - component: {fileID: 319567846317739315}
-  - component: {fileID: 5391818280364273310}
-  - component: {fileID: 5812584997315617329}
-  - component: {fileID: 7023240713038165913}
+  - component: {fileID: 3403700223668024919}
+  - component: {fileID: 2077277338236407804}
+  - component: {fileID: 8685131183467601218}
+  - component: {fileID: 2978074048144406376}
+  - component: {fileID: 4392040418619558060}
+  - component: {fileID: 1608362672615614273}
   m_Layer: 6
   m_Name: Pressure Plate
   m_TagString: Untagged
@@ -21,36 +21,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4550009541256306080
+--- !u!4 &3403700223668024919
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2502923650507345309}
+  m_GameObject: {fileID: 2979846120473242255}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: -3.22, z: -2}
-  m_LocalScale: {x: 2.7522705, y: 3.0640163, z: 2.9248}
+  m_LocalPosition: {x: 101.7, y: 34.8, z: -99.82}
+  m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6636607930397298491
+--- !u!33 &2077277338236407804
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2502923650507345309}
+  m_GameObject: {fileID: 2979846120473242255}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &319567846317739315
+--- !u!23 &8685131183467601218
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2502923650507345309}
+  m_GameObject: {fileID: 2979846120473242255}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5391818280364273310
+--- !u!65 &2978074048144406376
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2502923650507345309}
+  m_GameObject: {fileID: 2979846120473242255}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -107,28 +107,29 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5812584997315617329
+--- !u!114 &4392040418619558060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2502923650507345309}
+  m_GameObject: {fileID: 2979846120473242255}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc647de9c8a2b1c43bfedbd068b0f675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pressurePlate: {fileID: 4550009541256306080}
-  animate: {fileID: 7023240713038165913}
---- !u!95 &7023240713038165913
+  pressurePlate: {fileID: 3403700223668024919}
+  animatePlate: {fileID: 1608362672615614273}
+  animateDoor: {fileID: 0}
+--- !u!95 &1608362672615614273
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2502923650507345309}
+  m_GameObject: {fileID: 2979846120473242255}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d37308bd24874c44dafb4305b3d0e341, type: 2}

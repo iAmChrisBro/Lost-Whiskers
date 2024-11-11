@@ -15,11 +15,11 @@ public class ThirdPersonController : MonoBehaviour
     //movement fields
     private Rigidbody rb;
     [SerializeField]
-    private float movementForce = 1f;
+    private float movementForce;
     [SerializeField]
-    private float jumpForce = 5f;
+    private float jumpForce;
     [SerializeField]
-    private float maxSpeed = 5f;
+    private float maxSpeed;
     private Vector3 forceDirection = Vector3.zero;
 
     [SerializeField]
@@ -71,6 +71,8 @@ public class ThirdPersonController : MonoBehaviour
         if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)
             rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
 
+        animator.SetFloat("Speed",rb.velocity.magnitude / maxSpeed);
+
         LookAt();
     }
 
@@ -112,16 +114,14 @@ public class ThirdPersonController : MonoBehaviour
         Ray ray = new Ray(this.transform.position + Vector3.up * 0.25f, Vector3.down);
         if (Physics.Raycast(ray, out RaycastHit hit, 0.3f))
         {
+            animator.SetBool("isJumping", true);
             return true;
+            
         }
         else
         {
+            animator.SetBool("isJumping", false);
             return false;
         }
-    }
-
-    private void DoAttack(InputAction.CallbackContext obj)
-    {
-        animator.SetTrigger("attack");
     }
 }
