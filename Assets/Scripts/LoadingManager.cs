@@ -31,6 +31,9 @@ public class LoadingManager : MonoBehaviour
 
         while(!loadOperation.isDone)
         {
+            mainMenu.SetActive(false);
+            gameOverUI.SetActive(false);
+            scoreMenu.SetActive(false);
             float progressValue = Mathf.Clamp01(loadOperation.progress / 0.9f);
             loadingSlider.value = progressValue;
             yield return null;

@@ -14,8 +14,6 @@ public class SimpleCollectibleScript : MonoBehaviour {
 
 	public float rotationSpeed;
 
-	public AudioClip collectSound;
-
 	public GameObject collectEffect;
 
 	// Use this for initialization
@@ -41,14 +39,14 @@ public class SimpleCollectibleScript : MonoBehaviour {
 
 	public void Collect()
 	{
-		if(collectSound)
-			AudioSource.PlayClipAtPoint(collectSound, transform.position);
-		if(collectEffect)
-			Instantiate(collectEffect, transform.position, Quaternion.identity);
+        /*	if(collectSound)
+                AudioSource.PlayClipAtPoint(collectSound, transform.position);
+            if(collectEffect)
+                Instantiate(collectEffect, transform.position, Quaternion.identity);*/
 
-		//Below is space to add in your code for what happens based on the collectible type
+        //Below is space to add in your code for what happens based on the collectible type
 
-		if (CollectibleType == CollectibleTypes.NoType) {
+        if (CollectibleType == CollectibleTypes.NoType) {
 
 			//Add in code here;
 

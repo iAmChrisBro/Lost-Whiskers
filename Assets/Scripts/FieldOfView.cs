@@ -57,18 +57,22 @@ public class FieldOfView : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        playerRef = GameObject.FindGameObjectWithTag("Player");
+        if (playerRef == null)
+            playerRef = GameObject.FindGameObjectWithTag("Player");
 
+        // Draw the FOV radius
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, radius);
 
-        Vector3 angle01 = DirectionFromAngle(-transform.eulerAngles.y, -angle / 2);
-        Vector3 angle02 = DirectionFromAngle(-transform.eulerAngles.y, angle / 2);
+        // Draw the FOV angle lines
+        Vector3 angle01 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2);
+        Vector3 angle02 = DirectionFromAngle(transform.eulerAngles.y, angle / 2);
 
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + angle01 * radius);
         Gizmos.DrawLine(transform.position, transform.position + angle02 * radius);
 
+        // Draw a line to the player if visible
         if (CanSeePlayer && playerRef != null)
         {
             Gizmos.color = Color.green;
@@ -78,7 +82,7 @@ public class FieldOfView : MonoBehaviour
 
     private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
     {
-        angleInDegrees += eulerY;
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+        float radians = (angleInDegrees + eulerY) * Mathf.Deg2Rad;
+        return new Vector3(Mathf.Sin(radians), 0, Mathf.Cos(radians));
     }
 }

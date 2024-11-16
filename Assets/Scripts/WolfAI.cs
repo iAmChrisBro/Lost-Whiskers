@@ -16,6 +16,7 @@ public class WolfAI : MonoBehaviour
     private FieldOfView fov;
     private Transform target;
     private NavMeshAgent nav;
+    private AudioSource audioSource;
 
     public float followSpeed = 5f;  // Speed at which the object will follow the target
     public float stoppingDistance = 2f; // Minimum distance from the target before stopping
@@ -26,6 +27,7 @@ public class WolfAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         fov = GetComponent<FieldOfView>();
         nav = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,6 +50,7 @@ public class WolfAI : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             playerDead = true;
+            audioSource.Play();
         }
     }
 

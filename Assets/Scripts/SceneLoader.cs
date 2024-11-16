@@ -5,11 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    
-    public void PlayGame()
-    {
-        SceneManager.LoadScene("Level1");
-    }
 
     public void Levels()
     {
@@ -24,5 +19,10 @@ public class SceneLoader : MonoBehaviour
     public void TitleScreen()
     {
         SceneManager.LoadScene("TitleScreen");
+    }
+
+    public void LoadCutscene(string cutsceneName)
+    {
+        SceneManager.LoadScene(cutsceneName);
     }
 }

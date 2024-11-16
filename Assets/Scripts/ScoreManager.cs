@@ -6,21 +6,19 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public TMP_Text scoreText;
+    public TMP_Text scoreText,finalScore;
     public int scoreCount;
     public int totalScore;
     [SerializeField]
     private GameObject[] scoreMenuStars;
     [SerializeField]
     private GameObject scoreMenuUI;
+    private AudioSource collectSound;
 
     void Awake()
     {
         scoreMenuUI.SetActive(false);
-    }
-
-    void Start()
-    {
+        collectSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -29,15 +27,13 @@ public class ScoreManager : MonoBehaviour
         {
             SetScoreMenu();
         }
-
-        if (Input.GetKeyDown("space"))
-            UpdateScore();
     }
  
     public void UpdateScore()
     {
+        collectSound.Play();
         scoreCount++;
-        scoreText.text = scoreCount.ToString() + " / " + totalScore.ToString();
+        scoreText.text = scoreCount.ToString() + "/" + totalScore.ToString();
     }
 
     public void SetScoreMenu()
@@ -60,6 +56,6 @@ public class ScoreManager : MonoBehaviour
         {
             scoreMenuStars[3].SetActive(true);
         }
-
+        finalScore.text = scoreCount.ToString() + "/12";
     }
 }
