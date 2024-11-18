@@ -73,6 +73,9 @@ public class ThirdPersonController : MonoBehaviour
 
         animator.SetFloat("Speed",rb.velocity.magnitude / maxSpeed);
 
+        animator.SetBool("isGrounded", IsGrounded());
+
+
         LookAt();
     }
 
@@ -87,16 +90,18 @@ public class ThirdPersonController : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
     }
 
-    private Vector3 GetCameraForward(Camera playerCamera)
+    private Vector3 GetCameraForward(Camera camera)
     {
-        Vector3 forward = playerCamera.transform.forward;
+        if (camera == null) return Vector3.forward; // Fallback to a default direction
+        Vector3 forward = camera.transform.forward;
         forward.y = 0;
         return forward.normalized;
     }
 
-    private Vector3 GetCameraRight(Camera playerCamera)
+    private Vector3 GetCameraRight(Camera camera)
     {
-        Vector3 right = playerCamera.transform.right;
+        if (camera == null) return Vector3.right; // Fallback to a default direction
+        Vector3 right = camera.transform.right;
         right.y = 0;
         return right.normalized;
     }
@@ -105,6 +110,7 @@ public class ThirdPersonController : MonoBehaviour
     {
         if (IsGrounded())
         {
+            animator.SetBool("isGrounded", false);
             forceDirection += Vector3.up * jumpForce;
         }
     }
@@ -114,14 +120,19 @@ public class ThirdPersonController : MonoBehaviour
         Ray ray = new Ray(this.transform.position + Vector3.up * 0.25f, Vector3.down);
         if (Physics.Raycast(ray, out RaycastHit hit, 0.3f))
         {
-            animator.SetBool("isJumping", true);
             return true;
             
         }
         else
         {
-            animator.SetBool("isJumping", false);
             return false;
         }
     }
+
+    public void AssignCamera(Camera camera)
+    {
+        playerCamera = camera;
+    }
+
+
 }
