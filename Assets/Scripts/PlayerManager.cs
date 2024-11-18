@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> playerPrefabs;
 
+    private int playerIndex;
+
 
     private PlayerInputManager playerInputManager;
 
@@ -33,10 +35,18 @@ public class PlayerManager : MonoBehaviour
 
     public void AddPlayer(PlayerInput player)
     {
+        playerIndex = players.Count;
         // Determine the correct player prefab to instantiate
-        int playerIndex = players.Count;
-        GameObject playerPrefab = playerPrefabs[playerIndex];  // Get the correct player prefab based on the number of players
-        playerInputManager.playerPrefab = playerPrefab;  // Set the prefab for the new player
+
+        if (playerIndex == 2)
+        {
+            //Debug.Log("Skipped Element");
+        }
+        else
+        {
+            GameObject playerPrefab = playerPrefabs[playerIndex];  // Get the correct player prefab based on the number of players
+            playerInputManager.playerPrefab = playerPrefab;  // Set the prefab for the new player
+        }
 
         players.Add(player);
 

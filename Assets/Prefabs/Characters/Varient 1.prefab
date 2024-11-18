@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7518720115238924331}
   - component: {fileID: 5089834254278507876}
   m_Layer: 9
-  m_Name: Player2Cam
+  m_Name: PlayerCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3188037632008002080}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10369166, y: -0.5885537, z: 0.07646421, w: 0.7981264}
-  m_LocalPosition: {x: 16.088928, y: 5.4561462, z: -9.051949}
+  m_LocalRotation: {x: 0.1036508, y: -0.5885984, z: 0.076442346, w: 0.79810095}
+  m_LocalPosition: {x: 16.088951, y: 5.4561462, z: -9.051949}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerIndex: -1
+  PlayerIndex: 1
   AutoEnableInputs: 1
   XYAxis: {fileID: 7790289945233888181, guid: 05c319779c987a945b4fcf807781d3b2, type: 3}
   ZAxis: {fileID: 0}
@@ -1280,6 +1280,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 7518720115238924331}
+    - target: {fileID: 6176438698850404482, guid: 15583f2d858a4fa40a373cf6fe72f695, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6226687803429734716, guid: 15583f2d858a4fa40a373cf6fe72f695, type: 3}
       propertyPath: m_Layer
       value: 9

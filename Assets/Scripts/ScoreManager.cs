@@ -23,10 +23,15 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        if(PlatformMovement.playersOnPlat == 1)
+        if(KioskManager.playersOnPlat == 3)
         {
             SetScoreMenu();
         }
+
+        /*if (Input.GetKeyDown("space"))
+        {
+            UpdateScore();
+        }*/
     }
  
     public void UpdateScore()

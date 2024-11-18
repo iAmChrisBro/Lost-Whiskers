@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class SceneLoader : MonoBehaviour
 {
-
+    [SerializeField]
     public void Levels()
     {
         SceneManager.LoadScene("Levels");
