@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField]
+    private GameObject menuBtn;
     public void Levels()
     {
         SceneManager.LoadScene("Levels");
@@ -19,6 +20,7 @@ public class SceneLoader : MonoBehaviour
 
     public void TitleScreen()
     {
+        EventSystem.current.SetSelectedGameObject(menuBtn);
         SceneManager.LoadScene("TitleScreen");
     }
 

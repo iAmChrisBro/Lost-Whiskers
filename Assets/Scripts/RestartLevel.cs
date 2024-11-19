@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class RestartLevel : MonoBehaviour
 {
@@ -18,8 +20,8 @@ public class RestartLevel : MonoBehaviour
     private ScoreManager scoreCount;
     [SerializeField]
     private TMP_Text scoreText;
-
-
+    [SerializeField]
+    private GameObject restartBtn;
 
     void Start()
     {
@@ -54,6 +56,8 @@ public class RestartLevel : MonoBehaviour
             gameOverStars[3].SetActive(true);
         }
         scoreText.text = count.ToString() + "/ 12";
+
+        //EventSystem.current.SetSelectedGameObject(restartBtn);
     }
 
     private void CheckIfPlayerDead()

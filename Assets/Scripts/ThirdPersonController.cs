@@ -25,6 +25,8 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField]
     private Camera playerCamera;
     private Animator animator;
+    [SerializeField]
+    private GameObject faceIcon;
 
     private void Awake()
     {
@@ -33,6 +35,8 @@ public class ThirdPersonController : MonoBehaviour
         inputAsset = this.GetComponent<PlayerInput>().actions;
         player = inputAsset.FindActionMap("Player");
         animator = this.GetComponent<Animator>();
+        animator.SetBool("isGrounded", false);
+        animator.SetFloat("Speed", 0);
     }
 
     private void OnEnable()
@@ -57,8 +61,9 @@ public class ThirdPersonController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * movementForce;
-        forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * movementForce;
+        Vector2 input = move.ReadValue<Vector2>();
+        forceDirection += input.x * GetCameraRight(playerCamera) * movementForce;
+        forceDirection += input.y * GetCameraForward(playerCamera) * movementForce;
 
         rb.AddForce(forceDirection, ForceMode.Impulse);
         forceDirection = Vector3.zero;
@@ -71,10 +76,17 @@ public class ThirdPersonController : MonoBehaviour
         if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)
             rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
 
-        animator.SetFloat("Speed",rb.velocity.magnitude / maxSpeed);
+        // Update Speed based on input
+        if (input.sqrMagnitude > 0.1f)
+        {
+            animator.SetFloat("Speed", rb.velocity.magnitude / maxSpeed);
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0f); // Transition to idle when no input
+        }
 
         animator.SetBool("isGrounded", IsGrounded());
-
 
         LookAt();
     }
@@ -128,11 +140,4 @@ public class ThirdPersonController : MonoBehaviour
             return false;
         }
     }
-
-    public void AssignCamera(Camera camera)
-    {
-        playerCamera = camera;
-    }
-
-
 }

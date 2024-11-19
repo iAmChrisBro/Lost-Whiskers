@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -14,17 +16,22 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private GameObject scoreMenuUI;
     private AudioSource collectSound;
+    public static bool levelDone;
+    [SerializeField]
+    private GameObject restartBtn;
 
     void Awake()
     {
         scoreMenuUI.SetActive(false);
         collectSound = GetComponent<AudioSource>();
+        levelDone = false;
     }
 
     void Update()
     {
         if(KioskManager.playersOnPlat == 3)
         {
+            levelDone = true;
             SetScoreMenu();
         }
 
@@ -62,5 +69,7 @@ public class ScoreManager : MonoBehaviour
             scoreMenuStars[3].SetActive(true);
         }
         finalScore.text = scoreCount.ToString() + "/12";
+
+        EventSystem.current.SetSelectedGameObject(restartBtn);
     }
 }

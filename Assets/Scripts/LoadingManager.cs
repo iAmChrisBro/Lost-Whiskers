@@ -12,12 +12,26 @@ public class LoadingManager : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject scoreMenu;
+    [SerializeField] private GameObject btn;
+    [SerializeField] private GameObject btn2;
 
     [Header("Slider")]
     [SerializeField] private Slider loadingSlider;
 
     public void LoadLevelBtn(string levelToLoad)
     {
+        EventSystem.current.SetSelectedGameObject(btn);
+        mainMenu.SetActive(false);
+        gameOverUI.SetActive(false);
+        scoreMenu.SetActive(false);
+        loadingScreen.SetActive(true);
+
+        StartCoroutine(LoadLevelASync(levelToLoad));
+    }
+
+    public void LoadLevelBtn2(string levelToLoad)
+    {
+        EventSystem.current.SetSelectedGameObject(btn2);
         mainMenu.SetActive(false);
         gameOverUI.SetActive(false);
         scoreMenu.SetActive(false);

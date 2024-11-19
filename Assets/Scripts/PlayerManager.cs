@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -12,11 +13,11 @@ public class PlayerManager : MonoBehaviour
     private List<LayerMask> playerLayers;
     [SerializeField]
     private List<GameObject> playerPrefabs;
-
     private int playerIndex;
-
-
     private PlayerInputManager playerInputManager;
+    [SerializeField]
+    private TMP_Text joinText, startText;
+    private int playerJoinIndex = 3;
 
     private void Awake()
     {
@@ -36,6 +37,16 @@ public class PlayerManager : MonoBehaviour
     public void AddPlayer(PlayerInput player)
     {
         playerIndex = players.Count;
+        playerJoinIndex--;
+
+        if (playerJoinIndex == 0)
+        {
+            joinText.enabled = false;
+            startText.enabled = false;
+        }
+        else
+            joinText.text = "Players Joined " + "(" + playerJoinIndex + ")";
+
         // Determine the correct player prefab to instantiate
 
         if (playerIndex == 2)

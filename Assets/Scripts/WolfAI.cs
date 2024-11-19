@@ -36,7 +36,8 @@ public class WolfAI : MonoBehaviour
         if (fov.CanSeePlayer)
         {
             canSeePlayer = true;
-            target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+            if(target != null)
+                target = GameObject.FindWithTag("Player").GetComponent<Transform>();
         }
 
         if (canSeePlayer)
